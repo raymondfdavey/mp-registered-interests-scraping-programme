@@ -2,5 +2,5 @@ const app = require("./app");
 const port = process.env.PORT || 8080;
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+  console.log(`MP REG istening at http://localhost:${port}`);
 });
