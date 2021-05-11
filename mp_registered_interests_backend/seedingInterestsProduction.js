@@ -30,7 +30,7 @@ function getArrayOfFilesThatHaveNotBeenUploaded(
 console.log(filesToProcess);
 
 const uriInterestsProduction =
-  "mongodb+srv://admin:fJWP9TaqQRKV08YQ@cluster0.usilp.mongodb.net/interests_production?retryWrites=true&w=majority";
+  process.env.DB_CONNECTION_STRING_INTERESTS_PRODUCTION;
 
 function getInterestsJSON(JSONpath) {
   console.log(JSONpath);
@@ -98,7 +98,8 @@ async function main() {
       arrayOfAllInterestsToBeUploadedThisSession.push(flattenedFileInterests);
       arrayOfAlreadyAdded.push(filesToProcess[i]);
     }
-    const finalArrayForUpload = arrayOfAllInterestsToBeUploadedThisSession.flat();
+    const finalArrayForUpload =
+      arrayOfAllInterestsToBeUploadedThisSession.flat();
 
     await createMultipleListing(client, finalArrayForUpload);
     newObj = { datesAddedToDatabase: arrayOfAlreadyAdded };

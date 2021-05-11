@@ -30,8 +30,7 @@ function getArrayOfFilesThatHaveNotBeenUploaded(
 
 console.log(filesToProcess);
 
-const uriInterestsTest =
-  "mongodb+srv://admin:fJWP9TaqQRKV08YQ@cluster0.usilp.mongodb.net/interests_test?retryWrites=true&w=majority";
+const uriInterestsTest = process.env.DB_CONNECTION_STRING_INTERESTS_TEST;
 
 async function main() {
   const client = new MongoClient(uriInterestsTest, {
@@ -81,7 +80,8 @@ async function main() {
       arrayOfAllInterestsToBeUploadedThisSession.push(flattenedFileInterests);
       arrayOfAlreadyAdded.push(filesToProcess[i]);
     }
-    const finalArrayForUpload = arrayOfAllInterestsToBeUploadedThisSession.flat();
+    const finalArrayForUpload =
+      arrayOfAllInterestsToBeUploadedThisSession.flat();
 
     await createMultipleListing(client, finalArrayForUpload);
     newObj = { datesAddedToDatabase: arrayOfAlreadyAdded };

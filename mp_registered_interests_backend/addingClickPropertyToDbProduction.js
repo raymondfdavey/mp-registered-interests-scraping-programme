@@ -2,8 +2,7 @@ const MongoClient = require("mongodb").MongoClient;
 const fs = require("fs");
 
 const uriMembersProduction =
-  "mongodb+srv://admin:fJWP9TaqQRKV08YQ@cluster0.usilp.mongodb.net/members_production?retryWrites=true&w=majority";
-
+  process.env.DB_CONNECTION_STRING_MEMBERS_PRODUCTION;
 async function main() {
   const client = new MongoClient(uriMembersProduction, {
     useNewUrlParser: true,

@@ -1,8 +1,7 @@
 const MongoClient = require("mongodb").MongoClient;
 
 async function main() {
-  const uri =
-    "mongodb+srv://admin:fJWP9TaqQRKV08YQ@cluster0.usilp.mongodb.net/sample_airbnb?retryWrites=true&w=majority";
+  const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.usilp.mongodb.net/sample_airbnb?retryWrites=true&w=majority`;
 
   const client = new MongoClient(uri, {
     useNewUrlParser: true,

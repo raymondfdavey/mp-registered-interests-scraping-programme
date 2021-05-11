@@ -1,8 +1,7 @@
 const MongoClient = require("mongodb").MongoClient;
 const fs = require("fs");
 
-const uriMembersTest =
-  "mongodb+srv://admin:fJWP9TaqQRKV08YQ@cluster0.usilp.mongodb.net/members_test?retryWrites=true&w=majority";
+const uriMembersTest = process.env.DB_CONNECTION_STRING_MEMBERS_TEST;
 
 async function main() {
   const client = new MongoClient(uriMembersTest, {
